@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create New Restaurant</title>
+</head>
+<body>
+    <h1>Create New Restaurant</h1>
+
+    <form method="POST" action="{{url_for('new_restaurant')}}">
+        <input type="text" name="restaurant_name" placeholder="Please input name here">
+        <input type="submit" value="Create">
+    </form>
+    <br>
+    <a href="{{url_for('list_all_restaurants')}}"> Cancel </a>
+</body>
+</html>

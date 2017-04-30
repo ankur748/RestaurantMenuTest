@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurants in our Menu App</title>
+</head>
+<body>
+    <h1>Restaurants in our Menu App</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+    <h2><a href="{{url_for('new_restaurant')}}">Create new restaurant</a></h2>
+    {% for restaurant in restaurants %}
+    <p><a href="{{url_for('list_menu_items', restaurant_id = restaurant.id)}}">{{restaurant.name}}</a></p>
+    {% if restaurant.user_id == login_session.get('user_id') %}
+    <p>
+        <a href="{{url_for('edit_restaurant', restaurant_id = restaurant.id)}}"> Edit </a>
+        <a href="{{url_for('delete_restaurant', restaurant_id = restaurant.id)}}"> Delete </a>
+    </p>
+    {% endif %}
+    {% endfor %}
+</body>
+</html>
